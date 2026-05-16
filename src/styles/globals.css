@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  :root {
+    --accent: #06b6d4;
+    --accent-rgb: 6, 182, 212;
+    --bg-deep: #07070f;
+    --surface-1: rgba(255,255,255,0.04);
+    --surface-2: rgba(255,255,255,0.07);
+    --surface-3: rgba(255,255,255,0.10);
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.14);
+    --text-primary: rgba(255,255,255,0.92);
+    --text-secondary: rgba(255,255,255,0.55);
+    --text-muted: rgba(255,255,255,0.30);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+  }
+}
+
+@layer components {
+
+  .glass-xs {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .glass-sm {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .glass {
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+  .glass-md {
+    background: rgba(255,255,255,0.09);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .glass-lg {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid rgba(255,255,255,0.16);
+  }
+  .glass-sidebar {
+    background: rgba(10,10,20,0.60);
+    backdrop-filter: blur(48px);
+    -webkit-backdrop-filter: blur(48px);
+    border-right: 1px solid rgba(255,255,255,0.07);
+  }
+  .glass-topbar {
+    background: rgba(10,10,20,0.50);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .glass-modal-overlay {
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .glass-modal {
+    background: rgba(14,14,26,0.88);
+    backdrop-filter: blur(48px);
+    -webkit-backdrop-filter: blur(48px);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+
+
+  .accent-glow {
+    box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.15),
+                0 0 60px rgba(var(--accent-rgb), 0.06);
+  }
+  .accent-glow-sm {
+    box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.20);
+  }
+  .accent-border {
+    border-color: rgba(var(--accent-rgb), 0.35);
+  }
+
+
+  .glass-input {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .glass-input:focus {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(var(--accent-rgb), 0.50);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.10);
+  }
+  .glass-input::placeholder { color: var(--text-muted); }
+
+
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.12);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.22); }
+
+
+  ::selection {
+    background: rgba(var(--accent-rgb), 0.30);
+    color: #fff;
+  }
+
+
+  .priority-low    { @apply bg-emerald-500/15 text-emerald-400 border border-emerald-500/20; }
+  .priority-medium { @apply bg-amber-500/15 text-amber-400 border border-amber-500/20; }
+  .priority-high   { @apply bg-rose-500/15 text-rose-400 border border-rose-500/20; }
+
+
+  [data-dragging="true"] {
+    opacity: 0.5;
+    cursor: grabbing;
+  }
+}
+
+
+[data-tauri-drag-region] {
+  -webkit-app-region: drag;
+  app-region: drag;
+}
+[data-tauri-drag-region] button,
+[data-tauri-drag-region] a,
+[data-tauri-drag-region] input {
+  -webkit-app-region: no-drag;
+  app-region: no-drag;
+}
